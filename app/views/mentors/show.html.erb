@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= image_tag @mentor.picture, class: 'rounded float-left', width: 120 if @mentor.picture.attached? %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @mentor.bio %>
+</p>
+
+<p>
+  <strong>Accept mentee:</strong>
+  <%= @mentor.accept_mentee %>
+</p>
+
+<p>
+  <strong>Linkedin:</strong>
+  <%= @mentor.linkedIn %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @mentor.website %>
+</p>
+
+<%= link_to 'Edit', edit_mentor_path(@mentor) %> |
+<%= link_to 'Back', mentors_path %>
