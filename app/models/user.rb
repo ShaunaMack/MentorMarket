@@ -9,6 +9,8 @@ class User < ApplicationRecord
   
   has_many :personal_messages, dependent: :destroy
 
+  has_one :profile, dependent: :destroy
+  
   def name
     email.split('@')[0]
   end
