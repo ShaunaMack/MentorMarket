@@ -1,3 +1,41 @@
-<% if user_signed_in? %>
-  <p>Signed in as <%= current_user.name %> | <%= link_to 'log out', destroy_user_session_path, method: :delete %></p>
-<% end %>
+<div class="col bg-primary ">
+  <div class="row"> 
+  
+    <div class="col-6 search_bar">
+      <%= form_tag(root_path, :method => "get",   
+          class: 'navbar-form navbar-left') do %>  
+        <div class="input-group">  
+          <%= search_field_tag :search %>  
+          <div class="input-group-btn">  
+              <%= button_tag "search", :class => 'glyphicon glyphicon-search',:name => nil%>  
+          </div>  
+        </div>  
+        <% end %>
+    </div>
+    
+    <div class="col text-right nav_btn">      
+      <% if user_signed_in? %>
+          <p class="nav-item">
+            <%= current_user.name %>
+            |
+            <%= link_to 'Logout', destroy_user_session_path, method: 'delete',  class:"btn btn-primary"%>
+            
+          </p>
+      <% else %>
+          <p class="nav-item">
+            <%= link_to 'Login', new_user_session_path, class:"btn btn-primary" %>
+          |
+            <%= link_to 'Sign Up', new_user_registration_path, class:"btn btn-primary"  %>
+          </p>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+  
+
+ 
+    
+        
+
+ 

@@ -57,3 +57,5 @@ gem "devise", "~> 4.7"
 gem 'simple_form'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'gemoji'
+gem 'emoji'
