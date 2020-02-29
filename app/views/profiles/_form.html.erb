@@ -1,0 +1,26 @@
+<p>Profile:</p>
+<%= form_with model: @profile do |form| %>
+    <%= form.hidden_field :user_id %>
+<p>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true, minlength: 1 %>
+</p>
+<p>
+    <%= form.label :job_title %>
+    <%= form.text_field :job_title, required: true %>
+</p>
+<p>
+    <%= form.label :employer %>
+    <%= form.text_field :employer %>
+</p>
+<p>
+    <%= form.label :city%>
+    <%= form.text_field :city %>
+</p>
+<p>
+    <%= form.label :state %>
+    <%= form.text_field :state%>
+</p>
+
+<%= form.submit 'Submit profile', class: "btn btn-primary"%>
+<% end %>

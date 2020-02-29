@@ -9,15 +9,13 @@
 
     <%= f.hidden_field :user %>
     <%= f.input :bio %>
-    <%= f.input :accept_mentee %>
+    <%= f.input :accept_mentee, label: "Accepting new mentees?" %>
     <%= f.input :linkedIn %>
     <%= f.input :website %>
     <%= f.label :picture %>
     <%= f.file_field :picture, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
   </div>
     
-  
-
   <div class="form-actions">
     <%= f.button :submit, class:'btn btn-primary' %>
   </div>

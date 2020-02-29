@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+    <% if !current_user.profile%>
+        <h1><%= "New Profile: #{current_user.username}"%></h1>
+
+        <%= render 'form', profile: @profile %>
+        
+    <% else %>
+        <h3>You already have a user profile</h3>
+        <%= link_to 'Show my user profile', profile_path(current_user.profile), class:'btn btn-primary col-3'  %>
+        <%= link_to 'Edit my user profile', edit_profile_path(current_user.profile), class:'btn btn-primary col-3'  %>
+    <% end %>
+<% else %>
+    <%= link_to "Login to continue", new_user_session_path %>
+<% end %>

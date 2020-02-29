@@ -1,8 +1,24 @@
-<p id="notice"><%= notice %></p>
 
-<h1> Need to get profile here somehow!</h1>
+<h1> 
+  <%= @mentor.user.get_name %></h1>
 <p>
   <%= image_tag @mentor.picture, class: 'rounded float-right', width: 300 if @mentor.picture.attached? %>
+</p>
+
+
+<p>
+<i>
+  – <%= @mentor.user.get_profile_field(:job_title) %>
+  at
+  <%= @mentor.user.get_profile_field(:employer) %>
+  </i>
+</p>
+
+
+<p>
+  <strong>Location:</strong>
+  <%= @mentor.user.get_profile_field(:city) %>, 
+  <%= @mentor.user.get_profile_field(:state) %>
 </p>
 
 <p>
@@ -16,17 +32,12 @@
 </p>
 
 <p>
-  <strong>Linkedin:</strong>
-  <%= @mentor.linkedIn %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @mentor.website %>
+  <a href="<%= @mentor.linkedIn %>">LinkedIn</a> | <a href="<%= @mentor.website %>">Website</a>
 </p>
 <% if current_user %>
   <% if current_user.mentor == @mentor  %>
-    <%= link_to 'Edit', edit_mentor_path(@mentor), class:'btn btn-primary'  %>
+    <%= link_to 'Edit mentor profile fields', edit_mentor_path(@mentor), class:'btn btn-primary'  %>
+    <%= link_to 'Edit user profile fields', edit_profile_path(@mentor), class:'btn btn-primary'  %>
     <%= link_to 'Delete mentor profile', @mentor, method: :delete, data: { confirm: 'Are you sure you want to delete mentor profile?' }, class:'btn btn-primary' %>
   <% else %>
     <%= link_to 'Request mentor match', root_path, class:'btn btn-primary'%>

@@ -7,8 +7,13 @@
 <% if current_user %>
 <ul>
   <li><%= link_to 'Mentor chat', conversations_path %></li>
-  <li><%= link_to 'View all Mentors', mentors_path %></li>
+  <li><%= link_to 'View available mentors', mentors_path %></li>
   <li><%= link_to 'Mentor profile page', mentor_path(current_user.mentor) %></li>
+  <% if current_user.profile %>
+    <li><%= link_to 'Edit user profile', edit_profile_path(current_user.profile) %></li>
+  <% else %>
+    <li><%= link_to 'Create user profile', new_profile_path %></li>
+  <% end %>
   <li><%= link_to 'Users list', users_path %></li>
 </ul>
 
