@@ -1,6 +1,6 @@
 class MentorsController < ApplicationController
   before_action :set_mentor, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index]
   # GET /mentors
   # GET /mentors.json
   def index
@@ -14,7 +14,6 @@ class MentorsController < ApplicationController
 
   # GET /mentors/new
   def new
-    @user = User.all
     @mentor = Mentor.new
   end
 
@@ -27,6 +26,8 @@ class MentorsController < ApplicationController
   def create
     @mentor = Mentor.new(mentor_params)
     @mentor.picture.attach(params[:mentor][:picture])
+    @mentor.user = current_user
+
     respond_to do |format|
       if @mentor.save
         format.html { redirect_to @mentor, notice: 'Mentor was successfully created.' }

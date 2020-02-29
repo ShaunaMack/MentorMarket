@@ -7,7 +7,7 @@
 
   <div class="form-inputs">
 
-    <%= f.association :user %>
+    <%= f.hidden_field :user %>
     <%= f.input :bio %>
     <%= f.input :accept_mentee %>
     <%= f.input :linkedIn %>
@@ -19,7 +19,7 @@
   
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class:'btn btn-primary' %>
   </div>
 <% end %>
 

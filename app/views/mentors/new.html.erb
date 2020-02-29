@@ -1,7 +1,11 @@
 <% if user_signed_in? %>
-    <h1><%= "New Mentor: #{@user.name}"%></h1>
+    <% if !current_user.mentor%>
+        <h1><%= "New Mentor: #{current_user.name}"%></h1>
 
-    <%= render 'form', mentor: @mentor %>
+        <%= render 'form', mentor: @mentor %>
 
-    <%= link_to 'Back', mentors_path %>
+        <%= link_to 'Back', mentors_path %>
+    <% end %>
+<% else %>
+    <%= link_to "Sign in to continue", new_user_session_path %>
 <% end %>

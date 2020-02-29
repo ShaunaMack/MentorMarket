@@ -21,7 +21,7 @@ class MentorsTest < ApplicationSystemTestCase
     fill_in "Website", with: @mentor.website
     click_on "Create Mentor"
 
-    assert_text "Mentor was successfully created"
+    assert_text "Mentor profile was successfully created"
     click_on "Back"
   end
 
@@ -36,7 +36,7 @@ class MentorsTest < ApplicationSystemTestCase
     fill_in "Website", with: @mentor.website
     click_on "Update Mentor"
 
-    assert_text "Mentor was successfully updated"
+    assert_text "Mentor profile was successfully updated"
     click_on "Back"
   end
 
@@ -46,6 +46,6 @@ class MentorsTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Mentor was successfully destroyed"
+    assert_text "Mentor profile was successfully destroyed"
   end
 end
