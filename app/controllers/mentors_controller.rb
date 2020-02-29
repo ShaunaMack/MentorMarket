@@ -14,6 +14,7 @@ class MentorsController < ApplicationController
 
   # GET /mentors/new
   def new
+    @user = User.all
     @mentor = Mentor.new
   end
 

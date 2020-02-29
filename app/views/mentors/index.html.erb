@@ -15,6 +15,7 @@
 
   <tbody>
     <% @mentors.each do |mentor| %>
+      <% if mentor.accept_mentee? %>
       <tr>
         <td><%= mentor.bio %></td>
         <td><%= mentor.accept_mentee %></td>
@@ -24,6 +25,7 @@
         <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
         <td><%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
