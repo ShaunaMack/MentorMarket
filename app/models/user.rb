@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   has_one :mentor, dependent: :destroy
 
-  def name
+  def username
     email.split('@')[0]
   end
 

@@ -1,9 +1,9 @@
-<h1>New message to <%= @receiver.name %></h1>
+<h1>Mentor request to <%= @receiver.username %></h1>
 
 <%= simple_form_for @personal_message do |f| %>
   <%= hidden_field_tag 'receiver_id', @receiver.id %>
 
   <%= f.label :body %>
-  <%= f.text_area :body %>
+  <%= f.text_area :body, placeholder: "Hi #{@receiver.username}, would you be my mentor?"%>
   <%= f.submit %>
 <% end %>
