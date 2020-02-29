@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Bio</th>
-      <th>Accept mentee</th>
       <th>Linkedin</th>
       <th>Website</th>
       <th colspan="3"></th>
@@ -18,12 +17,9 @@
       <% if mentor.accept_mentee? %>
       <tr>
         <td><%= mentor.bio %></td>
-        <td><%= mentor.accept_mentee %></td>
         <td><%= mentor.linkedIn %></td>
         <td><%= mentor.website %></td>
-        <td><%= link_to 'Show', mentor %></td>
-        <td></td>
-        <td><%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'See more', mentor %></td>
       </tr>
       <% end %>
     <% end %>
@@ -32,4 +28,3 @@
 
 <br>
 
-<%= link_to 'New Mentor', new_mentor_path %>

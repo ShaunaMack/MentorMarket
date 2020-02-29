@@ -17,7 +17,7 @@
 #conversation-body {
     max-height: 400px;
     overflow-y: auto;
-    margin-bottom: 2em;
+    margin-bottom: 2em
 }
 
 .navbar .nav-item:not(:last-child) {
@@ -30,4 +30,8 @@
 
 .show.dropdown .dropdown-toggle::after {
     transform: translateY(3px);
+}
+
+.topnav {
+    padding-top: 5px;
 }

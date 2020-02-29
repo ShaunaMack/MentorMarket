@@ -1,13 +1,13 @@
 <div class="col bg-primary ">
-  <div class="row"> 
+  <div class="row topnav"> 
   
-    <div class="col-6 search_bar">
+    <div class="col-4 search_bar">
       <%= form_tag(root_path, :method => "get",   
           class: 'navbar-form navbar-left') do %>  
         <div class="input-group">  
-          <%= search_field_tag :search %>  
-          <div class="input-group-btn">  
-              <%= button_tag "search", :class => 'glyphicon glyphicon-search',:name => nil%>  
+          <%= search_field_tag :search, params[:search], placeholder: "🔎 Search mentor by name ", class: "form-control" %>  
+          <div class="input-group-btn btn btn-primary">  
+              <%= button_tag "search",:name => nil%>  
           </div>  
         </div>  
         <% end %>

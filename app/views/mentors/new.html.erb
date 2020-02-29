@@ -5,6 +5,10 @@
         <%= render 'form', mentor: @mentor %>
 
         <%= link_to 'Back', mentors_path %>
+    <% else %>
+        <h3>You already have a mentor profile</h3>
+        <%= link_to 'Show my Mentor profile', mentor_path(current_user.mentor), class:'btn btn-primary col-3'  %>
+        <%= link_to 'Edit my Mentor profile', edit_mentor_path(current_user.mentor), class:'btn btn-primary col-3'  %>
     <% end %>
 <% else %>
     <%= link_to "Sign in to continue", new_user_session_path %>
