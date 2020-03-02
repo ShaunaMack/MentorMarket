@@ -1,32 +1,23 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Mentors</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Bio</th>
-      <th>Linkedin</th>
-      <th>Website</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @mentors.each do |mentor| %>
+<div class="row">
+  <h1>Mentors</h1>
+  <div class="card-columns">
+  <% @mentors.each do |mentor| %>
       <% if mentor.accept_mentee? %>
-        <tr>
-          <td><%= mentor.user.get_name %></td>
-          <td><%= mentor.bio %></td>
-          <td><%= mentor.linkedIn %></td>
-          <td><%= mentor.website %></td>
-          <td><%= link_to 'See more', mentor %></td>
-        </tr>
-      <% end %>
+    <div class="card bg-dark text-white text-center">
+      <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg" alt="computer image">
+      <div class="card-img-overlay">
+          <h3 class="card-title"><strong><%= mentor.user.get_name %></strong></h3>
+          <p class= "card-text"><%= mentor.user.get_profile_field(:job_title) %></p>
+          <p class= "card-text"><%= mentor.bio.truncate(40) %></p>
+          <p class="text-white">
+            <a href="<%= mentor.linkedIn %>" class="px-2 fa-lg"><i class="fab fa-linkedin-in"></i></a>
+            <a href="<%= mentor.website %>" class="px-2 fa-lg"><i class="fas fa-laptop-code"></i></a>
+          </p>
+          <%= link_to 'See more', mentor, class:"btn btn-primary" %>
+      </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
+  <% end %>
+  </div>
+</div>
