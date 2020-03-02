@@ -10,11 +10,13 @@ class MentorsController < ApplicationController
   # GET /mentors/1
   # GET /mentors/1.json
   def show
+    @skills=@mentor.skills
   end
 
   # GET /mentors/new
   def new
     @mentor = Mentor.new
+    # @skill.mentor_id = params[:mentor]
   end
 
   # GET /mentors/1/edit
@@ -28,8 +30,10 @@ class MentorsController < ApplicationController
     @mentor.picture.attach(params[:mentor][:picture])
     @mentor.user = current_user
 
+    @skill = @mentor.skills.new(params[:mentor][:skill])
+    
     respond_to do |format|
-      if @mentor.save
+      if @mentor.save 
         format.html { redirect_to @mentor, notice: 'Mentor was successfully created.' }
         format.json { render :show, status: :created, location: @mentor }
       else
@@ -73,4 +77,5 @@ class MentorsController < ApplicationController
     def mentor_params
       params.require(:mentor).permit(:user_id, :bio, :accept_mentee, :linkedIn, :website, :picture)
     end
+
 end

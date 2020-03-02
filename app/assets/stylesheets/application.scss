@@ -45,12 +45,13 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-evenly;
+    
     .card {
-        width: 300px;
+        width: 350px;
         height: 250px;
     }
-}
-.card-img {
-    opacity: 50%;
-}
 
+    .card-img {
+        opacity: 50%;
+    }
+}

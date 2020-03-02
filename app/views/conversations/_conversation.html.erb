@@ -1,9 +1,7 @@
 <div>
-  Chatting with <%= conversation.with(current_user).username %>
+   <h3><%= conversation.with(current_user).username %></h3>
+  <em><%= conversation.personal_messages.last.user.username %>: <%= sanitize conversation.personal_messages.last.body.truncate(50).html_safe %></em>
   <br>
-  <em><%= sanitize conversation.personal_messages.last.body.truncate(50).html_safe %></em>
-  <br>
-  <%= link_to 'View conversation', conversation_path(conversation) %>
+  <%= link_to "Chat with #{conversation.with(current_user).username}", conversation_path(conversation) %>
   <hr>
 </div>
-<a href="https://www.webfx.com/tools/emoji-cheat-sheet" target="_blank">Emoji cheat sheet</a>

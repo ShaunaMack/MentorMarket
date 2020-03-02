@@ -8,7 +8,9 @@
 <ul>
   <li><%= link_to 'Mentor chat', conversations_path %></li>
   <li><%= link_to 'View available mentors', mentors_path %></li>
-  <li><%= link_to 'Mentor profile page', mentor_path(current_user.mentor) %></li>
+  <% if current_user.mentor %>
+    <li><%= link_to 'My mentor profile page', mentor_path(current_user.mentor) %></li>
+  <% end %>
   <% if current_user.profile %>
     <li><%= link_to 'Edit user profile', edit_profile_path(current_user.profile) %></li>
   <% else %>
