@@ -5,6 +5,6 @@ class Mentor < ApplicationRecord
 
   has_many :skills, dependent: :destroy
 
-  
+  has_many :beliefs, dependent: :destroy
   
 end

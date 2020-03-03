@@ -39,6 +39,16 @@
  <%end%>
  </p>
 
+ <p><strong> Beliefs:</strong>
+ <%if @beliefs%>
+   <%@beliefs.each do |belief|%>
+     <div>
+       <p><%= belief.get_friendly_name %></p>
+     </div>
+   <%end%>
+ <%end%>
+ </p>
+
 <p>
   <a href="<%= @mentor.linkedIn %>" target="_blank">LinkedIn</a> | <a href="<%= @mentor.website %>" target="_blank">Website</a>
 </p>

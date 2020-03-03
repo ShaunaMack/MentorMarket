@@ -11,6 +11,7 @@ class MentorsController < ApplicationController
   # GET /mentors/1.json
   def show
     @skills=@mentor.skills
+    @beliefs=@mentor.beliefs
   end
 
   # GET /mentors/new
@@ -30,12 +31,15 @@ class MentorsController < ApplicationController
     @mentor.picture.attach(params[:mentor][:picture])
     @mentor.user = current_user
 
-    # @skill = @mentor.skills.new(params[:mentor][:skill])
+    # iterate through parameters - array created by multi select
     params[:mentor][:skills].each do | skill |
-
       @mentor.skills.build(:name => skill)
-    
     end
+
+    params[:mentor][:beliefs].each do | belief |
+      @mentor.beliefs.build(:name => belief)
+    end
+
     respond_to do |format|
       if @mentor.save 
         format.html { redirect_to @mentor, notice: 'Mentor was successfully created.' }
@@ -50,6 +54,13 @@ class MentorsController < ApplicationController
   # PATCH/PUT /mentors/1
   # PATCH/PUT /mentors/1.json
   def update
+    @mentor.skills.each do |skill|
+      skill.destroy
+    end
+    
+    params[:mentor][:skills].each do | skill |
+      @mentor.skills.build(:name => skill)
+    end
     respond_to do |format|
       if @mentor.update(mentor_params)
         format.html { redirect_to @mentor, notice: 'Mentor profile was successfully updated.' }
