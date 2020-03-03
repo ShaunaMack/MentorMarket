@@ -30,8 +30,10 @@ class MentorsController < ApplicationController
     @mentor.picture.attach(params[:mentor][:picture])
     @mentor.user = current_user
 
-    @skill = @mentor.skills.new(params[:mentor][:skill])
+    # @skill = @mentor.skills.new(params[:mentor][:skill])
     
+    @skill = @mentor.skills.build(:name => params[:mentor][:skills])
+
     respond_to do |format|
       if @mentor.save 
         format.html { redirect_to @mentor, notice: 'Mentor was successfully created.' }
@@ -48,7 +50,7 @@ class MentorsController < ApplicationController
   def update
     respond_to do |format|
       if @mentor.update(mentor_params)
-        format.html { redirect_to @mentor, notice: 'Mentor was successfully updated.' }
+        format.html { redirect_to @mentor, notice: 'Mentor profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @mentor }
       else
         format.html { render :edit }
@@ -62,7 +64,7 @@ class MentorsController < ApplicationController
   def destroy
     @mentor.destroy
     respond_to do |format|
-      format.html { redirect_to mentors_url, notice: 'Mentor was successfully destroyed.' }
+      format.html { redirect_to mentors_url, notice: 'Mentor profile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

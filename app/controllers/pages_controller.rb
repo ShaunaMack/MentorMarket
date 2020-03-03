@@ -6,9 +6,8 @@ class PagesController < ApplicationController
         if params[:search].blank?
             redirect_to(root_path, alert: "Empty field!") and return
         else
-            # p gender::text
             @parameter = params[:search].downcase
-            @results = Mentor.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+            @results = Profile.where("lower(name) LIKE :search", name.downcase, search: "%#{@parameter}%")
         end
     end
 end

@@ -13,10 +13,9 @@
     <%= f.input :linkedIn %>
     <%= f.input :website %>
     <%= f.label :picture %>
-    <%= f.input :skills, collection: Skill::SKILLS %>
-    <%= f.button :submit %>
-
     <%= f.file_field :picture, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
+    <%= f.input :skills, collection: Skill::SKILLS %>
+   
   </div>
     
   <div class="form-actions">

@@ -22,4 +22,9 @@ class Skill < ApplicationRecord
     ['Technical Writing', 'technical_writing'],
     ['Conference Speaking','conference_speaking']];
 
+  
+  def get_friendly_name
+    SKILLS.to_h.key(self.name)
+  end
+
 end
