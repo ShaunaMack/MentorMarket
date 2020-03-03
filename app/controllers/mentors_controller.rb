@@ -31,9 +31,11 @@ class MentorsController < ApplicationController
     @mentor.user = current_user
 
     # @skill = @mentor.skills.new(params[:mentor][:skill])
-    
-    @skill = @mentor.skills.build(:name => params[:mentor][:skills])
+    params[:mentor][:skills].each do | skill |
 
+      @mentor.skills.build(:name => skill)
+    
+    end
     respond_to do |format|
       if @mentor.save 
         format.html { redirect_to @mentor, notice: 'Mentor was successfully created.' }

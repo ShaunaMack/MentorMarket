@@ -14,8 +14,8 @@
     <%= f.input :website %>
     <%= f.label :picture %>
     <%= f.file_field :picture, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
-    <%= f.input :skills, collection: Skill::SKILLS %>
-   
+    <p>In order to help prospective mentees find you, select the four of your strongest professional skills</p>
+    <%= f.input :skills, collection: Skill::SKILLS, input_html: { multiple: true }%>
   </div>
     
   <div class="form-actions">
