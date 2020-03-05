@@ -14,4 +14,22 @@ class MentorshipsController < ApplicationController
           redirect_to root_url
         end
     end
+
+
+    def update
+        respond_to do |format|
+            if @mentorship.update(mentorship_params)
+              format.html { redirect_to @mentorships, notice: 'Mentorship was successfully updated.' }
+              format.json { render :show, status: :ok, location: @mentorships }
+            else
+              format.html { render :edit }
+              format.json { render json: @mentorship.errors, status: :unprocessable_entity }
+            end
+          end
+    end
+private
+    # Only allow a list of trusted parameters through.
+    def mentorship_params
+        params.require(:mentorship).permit(:user_id, :accepted)
+      end
 end

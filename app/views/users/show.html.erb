@@ -1,0 +1,16 @@
+<h1> 
+  <%= @user.get_name %></h1>
+
+<p>
+<i>
+  – <%= @user.get_profile_field(:job_title) %>
+  at
+  <%= @user.get_profile_field(:employer) %>
+  </i>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @user.get_profile_field(:city) %>, 
+  <%= @user.get_profile_field(:state) %>
+</p>

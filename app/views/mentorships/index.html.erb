@@ -1,18 +1,40 @@
-<h1>Mentors</h1>
+<h1>Mentor Requests</h1>
 
-<% for user in current_user.mentor_users %>
-  <div class="user">
-    <p>
-      <strong><%= user.username %></strong>
-      <%= link_to 'Chat', new_personal_message_path(receiver_id: user), class:'btn btn-primary'%>
-      <div class="clear"></div>
-    </p>
-  </div>
+<% for menteeship in current_user.menteeships %>
+  <% if !menteeship.accepted %>
+    <div class="user">
+        <p>
+        <strong><%= menteeship.user.username %></strong>
+        <%= simple_form_for(menteeship) do |f| %>
+            <%= f.input :accepted, label: "Accept" %>
+            <%= f.submit "Fuck it", class:'btn btn-primary' %>     
+        <% end %>
+
+        <div class="clear"></div>
+        </p>
+    </div>
+  <% end %>
 <% end %>
 
 <h1>Mentees</h1>
 
-<% for user in current_user.mentee_users %>
+<% for user in current_user.menteeships %>
+  <% if menteeship.accepted %>
+    <div class="user">
+        <p>
+        <strong><%= menteeship.user.username %></strong>
+        <%= link_to 'Chat', new_personal_message_path(receiver_id: menteeship.user), class:'btn btn-primary' %>
+        <div class="clear"></div>
+        </p>
+    </div>
+  <% end %>
+<% end %>
+
+
+
+<h1>Mentors</h1>
+
+<% for user in current_user.mentor_users %>
   <div class="user">
     <p>
       <strong><%= user.username %></strong>

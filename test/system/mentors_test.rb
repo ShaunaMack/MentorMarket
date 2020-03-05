@@ -34,7 +34,7 @@ class MentorsTest < ApplicationSystemTestCase
     fill_in "Linkedin", with: @mentor.linkedIn
     fill_in "User", with: @mentor.user_id
     fill_in "Website", with: @mentor.website
-    click_on "Update Mentor"
+    click_on "Update Mentor Profile"
 
     assert_text "Mentor profile was successfully updated"
     click_on "Back"

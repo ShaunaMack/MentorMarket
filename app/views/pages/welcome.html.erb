@@ -1,11 +1,17 @@
 <h1>Mentor Market</h1>
-
+ <% if notice %>
+      <p class="notice alert-success"><%= notice %></p>
+    <%end%>
+    <%if alert%>
+      <p class="alert alert-warning"><%= alert %></p>
+    <% end %>
+    
 <div class= "row space-evenly">
     <% if current_user %>
             <%= link_to 'Find a Mentor', mentors_path, class:'btn btn-primary col-5' %>
             <div class="col-2"></div>
             <% if current_user.mentor %>
-                <%= link_to 'Edit my Mentor profile', edit_mentor_path(current_user.mentor), class:'btn btn-primary col-5'  %>
+                <%= link_to 'Show my Mentor profile', mentor_path(current_user.mentor), class:'btn btn-primary col-5'  %>
             <% else %>
                 <%= link_to 'Become a Mentor', new_mentor_path, class:'btn btn-primary col-5' %>
             <% end %>

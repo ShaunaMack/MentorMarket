@@ -2,17 +2,17 @@
 <div class="col bg-primary ">
   <div class="row topnav"> 
   
-    <div class="col-4 search_bar">
-      <%= form_tag(root_path, :method => "get",   
-          class: 'navbar-form navbar-left') do %>  
-        <div class="input-group"> 
-          <%= search_field_tag :search, params[:search], placeholder: "🔎 Search mentor by name ", class: "form-control"  %>  
-          
-          <div class="input-group-btn btn btn-primary">  
-              <%= button_tag "search",:name => nil%>  
+    <div class="col-3 search_bar">
+      <%= form_tag(search_page_path, :method => "get",   
+        class: 'navbar-form navbar-left') do %>  
+      <div class="input-group">  
+        <%= search_field_tag :search, params[:search], placeholder: "Search by name", class: "form-control" %>  
+          <div class="input-group-btn">
+            
+            <%= button_tag "",  :class => 'btn btn-primary fas fa-search',:name => nil%>  
           </div>  
-        </div>  
-        <% end %>
+      </div>  
+      <% end %>
     </div>
     
     <div class="col text-right nav_btn">    
