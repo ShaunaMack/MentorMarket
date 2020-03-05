@@ -57,8 +57,10 @@
     <%= link_to 'Edit mentor profile fields', edit_mentor_path(@mentor), class:'btn btn-primary'  %>
     <%= link_to 'Edit user profile fields', edit_profile_path(@mentor), class:'btn btn-primary'  %>
     <%= link_to 'Delete mentor profile', @mentor, method: :delete, data: { confirm: 'Are you sure you want to delete mentor profile?' }, class:'btn btn-primary' %>
+  <% elsif current_user.mentor_users.include?(@mentor.user) %>
+    <%= link_to 'Chat', new_personal_message_path(receiver_id: @mentor.user), class:'btn btn-primary'%>
   <% else %>
-    <%= link_to 'Request mentor match', new_personal_message_path(receiver_id: @mentor.user), class:'btn btn-primary'%>
+      <%= link_to 'Request mentor match', mentorships_path(:mentor_user_id => @mentor.user), :method => :post, class:'btn btn-primary' %>
   <% end %>
 <% else %>
   <%= link_to 'Login to request mentor', new_user_session_path, class:'btn btn-primary'%>
