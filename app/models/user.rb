@@ -13,6 +13,9 @@ class User < ApplicationRecord
 
   has_one :mentor, dependent: :destroy
 
+  has_many :mentorships
+  has_many :mentor_users, :through => :mentorships
+
   def username
     email.split('@')[0]
   end
