@@ -56,10 +56,14 @@ class MentorsController < ApplicationController
   def update
     @mentor.skills.each do |skill|
       skill.destroy
+      belief.destroy
     end
     
     params[:mentor][:skills].each do | skill |
       @mentor.skills.build(:name => skill)
+    end
+    params[:mentor][:beliefs].each do | belief |
+      @mentor.beliefs.build(:name => belief)
     end
     respond_to do |format|
       if @mentor.update(mentor_params)
