@@ -16,6 +16,9 @@ class User < ApplicationRecord
   has_many :mentorships
   has_many :mentor_users, :through => :mentorships
 
+  has_many :menteeships, :class_name => 'Mentorship', :foreign_key => 'mentor_user_id'
+  has_many :mentee_users, :through => :menteeships, :source => :user
+
   def username
     email.split('@')[0]
   end
