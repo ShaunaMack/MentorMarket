@@ -1,8 +1,8 @@
-<% for user in @users %>
+<% for user in current_user.mentor_users %>
   <div class="user">
     <p>
-      <strong><%=h user.username %></strong>
-      <%= link_to "Add mentor", mentorships_path(:mentor_user_id => user), :method => :post %>
+      <strong><%= user.username %></strong>
+      <%= link_to 'Chat', new_personal_message_path(receiver_id: user), class:'btn btn-primary'%>
       <div class="clear"></div>
     </p>
   </div>
