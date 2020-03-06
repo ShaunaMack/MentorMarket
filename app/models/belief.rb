@@ -1,22 +1,21 @@
 class Belief < ApplicationRecord
   belongs_to :mentor
 
-
   BELIEFS =
     [['Diversity', 'diversity'], 
     ['Inclusivity', 'inclusivity'], 
     ['Accessibility', 'accessibility'],
-    ['Women in tech', 'women_in_tech'], 
-    ['Indigenous Careers in tech', 'indigenous_careers'], 
-    ['Ethical tech', 'ethical_tech'], 
-    ['LGBTIQ representation', 'lgbtiq'], 
+    ['Women in Tech', 'women_in_tech'], 
+    ['Indigenous Careers in Tech', 'indigenous_careers'], 
+    ['Ethical Tech', 'ethical_tech'], 
+    ['LGBTIQ Representation', 'lgbtiq'], 
     ['Self Taught', 'self_taught'], 
     ['Career Changers', 'career_changers'], 
-    ['Right to privacy', 'privacy'],
+    ['Right to Privacy', 'privacy'],
     ['Freedom of Information', 'free_information'],
     ['Nerodiversity', 'neurodiversity'],
     ['Reaching the Underserved', 'reach_underserved'],
-    ['Rural or Regional tech', 'rural_tech']];
+    ['Rural or Regional Tech', 'rural_tech']];
 
   
   def get_friendly_name

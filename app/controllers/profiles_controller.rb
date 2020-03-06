@@ -21,11 +21,9 @@ class ProfilesController < ApplicationController
     end
 
     def edit
-        
     end
 
-    def show
-        
+    def show 
     end
       
     def update

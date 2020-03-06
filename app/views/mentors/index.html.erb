@@ -1,8 +1,9 @@
 
-<h1>Mentors</h1>
+
+<h1 class="row">Available Mentors</h1>
 <div class="row">
   <div class="col-3 side-filter">
-    <h3>Filter by Skills</h3>
+    <h5>Find Mentor by Skill(s)</h5>
 
     <%= simple_form_for @search, url: mentors_path, method: "GET" do |f| %>
       <%= f.input :skills, label: "Skills", collection: Skill::SKILLS, as: :check_boxes %>
@@ -11,24 +12,24 @@
       <%= link_to "Reset", mentors_path  %>
     <% end %>
   </div>
-
+ 
   <div class="card-columns col-9">
     <% @mentors.each do |mentor| %>
         <% if mentor.accept_mentee? %>
-      <div class="card bg-dark text-white text-center">
-        <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg" alt="computer image">
-        <div class="card-img-overlay">
-            <h3 class="card-title"><strong><%= mentor.user.get_name %></strong></h3>
-            <p class= "card-text"><%= mentor.user.get_profile_field(:job_title) %></p>
-            <p class= "card-text"><%= mentor.bio.truncate(40) %></p>
-            <p>
-              <a href="<%= mentor.linkedIn %>" class="px-2 fa-lg" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-              <a href="<%= mentor.website %>" class="px-2 fa-lg" target="_blank"><i class="fas fa-laptop-code"></i></a>
-            </p>
-            <%= link_to 'See more', mentor, class:"btn btn-primary" %>
-        </div>
-        </div>
-      <% end %>
+          <div class="card bg-dark text-white text-center">
+            <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg" alt="computer image">
+            <div class="card-img-overlay">
+              <h3 class="card-title"><strong><%= mentor.user.get_name %></strong></h3>
+              <p class= "card-text"><%= mentor.user.get_profile_field(:job_title) %></p>
+              <p class= "card-text"><%= mentor.bio.truncate(40) %></p>
+              <p>
+                <a href="<%= mentor.linkedIn %>" class="px-2 fa-lg" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="<%= mentor.website %>" class="px-2 fa-lg" target="_blank"><i class="fas fa-laptop-code"></i></a>
+              </p>
+              <%= link_to 'See more', mentor, class:"btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
     <% end %>
   </div>
 </div>

@@ -1,15 +1,15 @@
 <h1>Search results</h1>
 <% if @results != nil %>
-<% @results.each do |result| %>
-    <p>
+    <% @results.each do |result| %>
+        <p>
         <%= result.user.get_name  %>
         <% if result.user.mentor && result.user.mentor.accept_mentee? %>
             <%= link_to 'View mentor profile', mentor_path(result.user.mentor) %><br>
         <% else %>
             <%= link_to 'View user profile', user_path(result.user) %>
         <% end %>
-    </p>
+        </p>
     <% end %>
-     <% else %>
-      <p>No results matching</p>
+<% else %>
+    <p>No results matching that name</p>
 <% end %>
