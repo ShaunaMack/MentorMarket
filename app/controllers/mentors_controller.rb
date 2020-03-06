@@ -5,6 +5,7 @@ class MentorsController < ApplicationController
   # GET /mentors.json
   def index
     @mentors = Mentor.all
+    
     # if params["search"]
     #   @filter = params["search"]["skills"].concat(params["search"]["beliefs"]).flatten.reject(&:blank?)
     #   @mentors = Mentor.all.global_search("#{@filter}")
@@ -15,6 +16,28 @@ class MentorsController < ApplicationController
     #   format.html
     #   format.js
     # end 
+    @search = params["search"]
+    if @search.present?
+
+      # @filter = params["search"]["skills"].concat(params["search"]["beliefs"]).flatten.reject(&:blank?)
+      # @mentors = @filter.empty? ? Mentor.all : Mentor.find(@skills, any: true)
+
+      # Mentor.find(:skills)
+      @mentors = Mentor.joins(:skills).where(skills: params["search"]["skills"])
+      # @mentors = Mentor.all
+
+      # @name = @search["name"]
+      # @profiles = Profile.where("lower(name) LIKE :search", search: "%#{@name}%")
+      # @mentors = []
+      # @profiles.each do |profile|
+      #   if profile.user.mentor 
+      #     @mentors.push(profile.user.mentor)
+      #   end
+      # end
+      # @mentors
+    else
+      @search = :Sds
+    end
   end
 
   # GET /mentors/1
@@ -65,9 +88,12 @@ class MentorsController < ApplicationController
   def update
     @mentor.skills.each do |skill|
       skill.destroy
+    end
+
+    @mentor.beliefs.each do |belief|
       belief.destroy
     end
-    
+
     params[:mentor][:skills].each do | skill |
       @mentor.skills.build(:name => skill)
     end

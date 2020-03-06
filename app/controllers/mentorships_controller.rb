@@ -17,9 +17,10 @@ class MentorshipsController < ApplicationController
 
 
     def update
+        @mentorship = Mentorship.find(params["id"])
         respond_to do |format|
             if @mentorship.update(mentorship_params)
-              format.html { redirect_to @mentorships, notice: 'Mentorship was successfully updated.' }
+              format.html { redirect_to mentorships_path, notice: 'Mentorship was successfully updated.' }
               format.json { render :show, status: :ok, location: @mentorships }
             else
               format.html { render :edit }

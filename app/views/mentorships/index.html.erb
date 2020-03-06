@@ -7,7 +7,7 @@
         <strong><%= menteeship.user.username %></strong>
         <%= simple_form_for(menteeship) do |f| %>
             <%= f.input :accepted, label: "Accept" %>
-            <%= f.submit "Fuck it", class:'btn btn-primary' %>     
+            <%= f.submit "Fix this link", class:'btn btn-primary' %>     
         <% end %>
 
         <div class="clear"></div>
@@ -23,6 +23,7 @@
     <div class="user">
         <p>
         <strong><%= menteeship.user.username %></strong>
+        
         <%= link_to 'Chat', new_personal_message_path(receiver_id: menteeship.user), class:'btn btn-primary' %>
         <div class="clear"></div>
         </p>

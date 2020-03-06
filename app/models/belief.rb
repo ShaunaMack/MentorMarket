@@ -5,6 +5,7 @@ class Belief < ApplicationRecord
   BELIEFS =
     [['Diversity', 'diversity'], 
     ['Inclusivity', 'inclusivity'], 
+    ['Accessibility', 'accessibility'],
     ['Women in tech', 'women_in_tech'], 
     ['Indigenous Careers in tech', 'indigenous_careers'], 
     ['Ethical tech', 'ethical_tech'], 
