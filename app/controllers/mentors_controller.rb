@@ -5,6 +5,16 @@ class MentorsController < ApplicationController
   # GET /mentors.json
   def index
     @mentors = Mentor.all
+    # if params["search"]
+    #   @filter = params["search"]["skills"].concat(params["search"]["beliefs"]).flatten.reject(&:blank?)
+    #   @mentors = Mentor.all.global_search("#{@filter}")
+    # else
+    #   @mentors = Mentor.all
+    # end
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end 
   end
 
   # GET /mentors/1
@@ -17,7 +27,6 @@ class MentorsController < ApplicationController
   # GET /mentors/new
   def new
     @mentor = Mentor.new
-    # @skill.mentor_id = params[:mentor]
   end
 
   # GET /mentors/1/edit

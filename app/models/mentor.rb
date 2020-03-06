@@ -7,4 +7,15 @@ class Mentor < ApplicationRecord
 
   has_many :beliefs, dependent: :destroy
   
+  include PgSearch::Model 
+
+  pg_search_scope :global_search,
+    against: [:name, :bio ],
+    associated_against: {
+      skills: [:name],
+      beliefs: [:name]
+    },
+    using: {
+      tsearch: {any_word: true}
+    }
 end

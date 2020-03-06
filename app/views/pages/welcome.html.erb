@@ -1,24 +1,30 @@
-<h1>Mentor Market</h1>
- <% if notice %>
-      <p class="notice alert-success"><%= notice %></p>
-    <%end%>
-    <%if alert%>
-      <p class="alert alert-warning"><%= alert %></p>
-    <% end %>
-    
-<div class= "row space-evenly">
-    <% if current_user %>
-            <%= link_to 'Find a Mentor', mentors_path, class:'btn btn-primary col-5' %>
-            <div class="col-2"></div>
-            <% if current_user.mentor %>
-                <%= link_to 'Show my Mentor profile', mentor_path(current_user.mentor), class:'btn btn-primary col-5'  %>
-            <% else %>
-                <%= link_to 'Become a Mentor', new_mentor_path, class:'btn btn-primary col-5' %>
-            <% end %>
-    <% else %>
-            <%= link_to 'Find a Mentor', mentors_path, class:'btn btn-primary col-5' %>
-            <div class="col-2"></div>
-            <%= link_to 'Become a Mentor', new_mentor_path, class:'btn btn-primary col-5' %>
-        
-    <% end %>
+<div class="jumbotron jumbotron-billboard">
+  <div class="img"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                
+                <h1 class="title">Mentor Market</h1>
+
+                <div class= "row space-evenly">
+                    <% if current_user %>
+                            <%= link_to 'Find a Mentor', mentors_path, class:'btn btn-primary col-5' %>
+                            <div class="col-2"></div>
+                        
+                            <% if current_user.mentor %>
+                                <%= link_to 'Show my Mentor profile', mentor_path(current_user.mentor), class:'btn btn-primary col-5'  %>
+                            <% else %>
+                                <%= link_to 'Become a Mentor', new_mentor_path, class:'btn btn-primary col-5' %>
+                            <% end %>
+                    <% else %>
+                            <%= link_to 'Find a Mentor', mentors_path, class:'btn btn-primary col-5' %>
+                            <div class="col-2"></div>
+                            <%= link_to 'Become a Mentor', new_mentor_path, class:'btn btn-primary col-5' %>
+                        
+                    <% end %>
+                </div>
+                <p>Mentorship is a mutual symbiotic relationship where an experienced person helps a mentee set important life goals and develop the skills to reach them. Informal mentoring can range from reviewing a resume or goals at Starbucks to a more formal workplace mentoring program that ties real life work, culture and stretch goals to a strategic plan initiative for succession planning and workforce development.</p>
+            </div>
+        </div>
+    </div>
 </div>

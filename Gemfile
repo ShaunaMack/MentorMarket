@@ -59,3 +59,4 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'gemoji'
 gem "aws-sdk-s3", "~> 1.60"
+gem 'pg_search'
