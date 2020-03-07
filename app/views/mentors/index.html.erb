@@ -3,14 +3,24 @@
 <h1 class="row">Available Mentors</h1>
 <div class="row">
   <div class="col-3 side-filter">
-    <h5>Find Mentor by Skill(s)</h5>
+  
+    <form action="<%= mentors_path %>" method="GET">
+      <h5>Filter Mentors by Skill(s)</h5>
 
-    <%= simple_form_for @search, url: mentors_path, method: "GET" do |f| %>
-      <%= f.input :skills, label: "Skills", collection: Skill::SKILLS, as: :check_boxes %>
-      <%= f.input :beliefs, label: "Beliefs", collection: Belief::BELIEFS, as: :check_boxes %>
-      <%= f.submit "Search", class: "btn btn-primary" %>
-      <%= link_to "Reset", mentors_path  %>
-    <% end %>
+      <% @skills.each do |skill| %>
+        <input id="filter_skill_<%= skill[1] %>" name="filter[skills][]" type="checkbox" value="<%= skill[1] %>" />
+        <label for="filter_skill_<%= skill[1] %>"><%= skill[0] %></label><br />
+      <% end %>
+      <h5>Filter Mentors by Belief(s)</h5>
+
+      <% @beliefs.each do |belief| %>
+        <input id="filter_belief_<%= belief[1] %>" name="filter[beliefs][]" type="checkbox" value="<%= belief[1] %>" />
+        <label for="filter_belief_<%= belief[1] %>"><%= belief[0] %></label><br />
+      <% end %>
+      <input type="submit" value="Filter Mentors" class="btn btn-primary" />
+      <%= link_to "Reset Filter", mentors_path, class: "btn btn-secondary" %>
+    </form>
+  
   </div>
  
   <div class="card-columns col-9">
@@ -28,8 +38,8 @@
               </p>
               <%= link_to 'See more', mentor, class:"btn btn-primary" %>
             </div>
-          </div>
-        <% end %>
+            </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -4,18 +4,25 @@ class MentorsController < ApplicationController
   # GET /mentors
   # GET /mentors.json
   def index
-    @mentors = Mentor.all
-    @search = params["search"]
-    if @search.present?
+    @skills = Skill::SKILLS
+    @beliefs = Belief::BELIEFS
+    @filter = params["filter"]
 
-      # @filter = params["search"]["skills"].concat(params["search"]["beliefs"]).flatten.reject(&:blank?)
-      # @mentors = @filter.empty? ? Mentor.all : Mentor.find(@skills, any: true)
-
-      # Mentor.find(:skills)
-      @mentors = Mentor.joins(:skills).where(skills: params["search"]["skills"])
-
+    if @filter.present?
+      @filter_beliefs = params["filter"]["beliefs"]
+      @filter_skills = params["filter"]["skills"]
+      
+      if @filter_beliefs.present? && @filter_skills.present?
+      # Mentor filter by skills
+        @mentors = Mentor.joins(:skills).joins(:beliefs).where("skills.name IN (?) AND beliefs.name IN (?)", params["filter"]["skills"], params["filter"]["beliefs"]).distinct
+      elsif @filter_beliefs.present?
+        @mentors = Mentor.joins(:beliefs).where("beliefs.name IN (?)", params["filter"]["beliefs"]).distinct
+      else
+        @mentors = Mentor.joins(:skills).where("skills.name IN (?)", params["filter"]["skills"]).distinct
+      end
     else
-      @search = :need_help
+      # @search = :need_help
+      @mentors = Mentor.all
     end
   end
 
