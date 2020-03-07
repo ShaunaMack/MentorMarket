@@ -29,25 +29,28 @@
   <%= @mentor.accept_mentee %>
 </p>
 
-<p><strong> Skills:</strong>
- <%if @skills%>
-   <%@skills.each do |skill|%>
-     <div>
-       <p><%= skill.get_friendly_name %></p>
-     </div>
-   <%end%>
- <%end%>
- </p>
+<div class="col-4">
+  <strong> Skills:</strong>
+  <%if @skills%>
+    <%@skills.each do |skill|%>
+      <ul>
+        <li><%= skill.get_friendly_name %></li>
+      </ul>
+    <%end%>
+  <%end%>
+ </div>
 
- <p><strong> Beliefs:</strong>
+ <div class="col-4">
+ <p><strong> Beliefs:</strong></p>
  <%if @beliefs%>
    <%@beliefs.each do |belief|%>
-     <div>
-       <p><%= belief.get_friendly_name %></p>
-     </div>
+     <ul>
+       <li><%= belief.get_friendly_name %></li>
+     </ul>
    <%end%>
  <%end%>
- </p>
+ </div>
+
 
 <p>
   <a href="<%= @mentor.linkedIn %>" target="_blank">LinkedIn</a> | <a href="<%= @mentor.website %>" target="_blank">Website</a>
