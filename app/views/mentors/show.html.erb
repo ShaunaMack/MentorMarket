@@ -2,7 +2,7 @@
   <div class="float-right">
     <%= image_tag @mentor.picture, class: 'profile-image', height:300 if @mentor.picture.attached? %>
   </div>
- 
+
   <h1><%= @mentor.user.get_name %></h1>
 <p>
 <i>
@@ -32,6 +32,7 @@
   <strong> Skills:</strong>
   <%if @skills%>
     <%@skills.each do |skill|%>
+      <% next unless skill.get_friendly_name %>
       <ul>
         <li><%= skill.get_friendly_name %></li>
       </ul>
@@ -43,6 +44,7 @@
  <p><strong> Beliefs:</strong></p>
  <%if @beliefs%>
    <%@beliefs.each do |belief|%>
+   <% next unless belief.get_friendly_name %>
      <ul>
        <li><%= belief.get_friendly_name %></li>
      </ul>

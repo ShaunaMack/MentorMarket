@@ -3,9 +3,9 @@
     <p class="nav-item">  
         <% if current_user %>
           <%= link_to 'Find a Mentor', mentors_path, class:"btn btn-sm btn-dark" %>
-          <%= link_to 'View my mentoring relationships', mentorships_path, class:"btn btn-sm btn-dark" %>
+          <%= link_to 'My Mentoring Relationships', mentorships_path, class:"btn btn-sm btn-dark" %>
             <% if current_user.mentor %>
-              <%= link_to 'My mentor profile page', mentor_path(current_user.mentor), class:"btn btn-sm btn-dark" %>
+              <%= link_to 'My Mentor Profile', mentor_path(current_user.mentor), class:"btn btn-sm btn-dark" %>
             <% else %>
               <%= link_to 'Become a Mentor', new_mentor_path, class:'btn btn-sm btn-dark' %>
             <% end %>

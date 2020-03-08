@@ -10,7 +10,7 @@
                             <div class="col-2"></div>
                         
                             <% if current_user.mentor %>
-                                <%= link_to 'Show my Mentor profile', mentor_path(current_user.mentor), class:'btn btn-lg btn-primary col-5'  %>
+                                <%= link_to 'My Mentor Profile', mentor_path(current_user.mentor), class:'btn btn-lg btn-primary col-5'  %>
                             <% else %>
                                 <%= link_to 'Become a Mentor', new_mentor_path, class:'btn btn-primary btn-lg col-5' %>
                             <% end %>

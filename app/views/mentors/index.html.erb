@@ -35,7 +35,7 @@
               </div>
             </div>
 
-            <p class= "card-text"><%= mentor.user.get_profile_field(:job_title) %></p>
+            <p class= "card-text"><i><%= mentor.user.get_profile_field(:job_title) %></i></p>
             <p class= "card-text"><%= mentor.bio.truncate(40) %></p>
             <p>
               <a href="<%= mentor.linkedIn %>" class="px-2 fa-lg" target="_blank"><i class="fab fa-linkedin-in"></i></a>
