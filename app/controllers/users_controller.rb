@@ -1,8 +1,9 @@
-class UsersController < ApplicationController
-    before_action :authenticate_user!
+# frozen_string_literal: true
 
-    def show
-        @user = User.find(params[:id])
-    end
-    
+class UsersController < ApplicationController
+  before_action :authenticate_user!
+
+  def show
+    @user = User.find(params[:id])
+  end
 end

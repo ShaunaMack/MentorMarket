@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -6,7 +8,7 @@ class User < ApplicationRecord
 
   has_many :authored_conversations, class_name: 'Conversation', foreign_key: 'author_id'
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
-  
+
   has_many :personal_messages, dependent: :destroy
 
   has_one :profile, dependent: :destroy
@@ -14,10 +16,10 @@ class User < ApplicationRecord
   has_one :mentor, dependent: :destroy
 
   has_many :mentorships
-  has_many :mentor_users, :through => :mentorships
+  has_many :mentor_users, through: :mentorships
 
-  has_many :menteeships, :class_name => 'Mentorship', :foreign_key => 'mentor_user_id'
-  has_many :mentee_users, :through => :menteeships, :source => :user
+  has_many :menteeships, class_name: 'Mentorship', foreign_key: 'mentor_user_id'
+  has_many :mentee_users, through: :menteeships, source: :user
 
   def username
     email.split('@')[0]

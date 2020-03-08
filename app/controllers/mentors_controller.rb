@@ -1,24 +1,26 @@
+# frozen_string_literal: true
+
 class MentorsController < ApplicationController
-  before_action :set_mentor, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_mentor, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
   # GET /mentors
   # GET /mentors.json
   def index
     @skills = Skill::SKILLS
     @beliefs = Belief::BELIEFS
-    @filter = params["filter"]
+    @filter = params['filter']
 
     if @filter.present?
-      @filter_beliefs = params["filter"]["beliefs"]
-      @filter_skills = params["filter"]["skills"]
-      
+      @filter_beliefs = params['filter']['beliefs']
+      @filter_skills = params['filter']['skills']
+
       if @filter_beliefs.present? && @filter_skills.present?
-      # Mentor filter by skills
-        @mentors = Mentor.joins(:skills).joins(:beliefs).where("skills.name IN (?) AND beliefs.name IN (?)", params["filter"]["skills"], params["filter"]["beliefs"]).distinct
+        # Mentor filter by skills
+        @mentors = Mentor.joins(:skills).joins(:beliefs).where('skills.name IN (?) AND beliefs.name IN (?)', params['filter']['skills'], params['filter']['beliefs']).distinct
       elsif @filter_beliefs.present?
-        @mentors = Mentor.joins(:beliefs).where("beliefs.name IN (?)", params["filter"]["beliefs"]).distinct
+        @mentors = Mentor.joins(:beliefs).where('beliefs.name IN (?)', params['filter']['beliefs']).distinct
       else
-        @mentors = Mentor.joins(:skills).where("skills.name IN (?)", params["filter"]["skills"]).distinct
+        @mentors = Mentor.joins(:skills).where('skills.name IN (?)', params['filter']['skills']).distinct
       end
     else
       # @search = :need_help
@@ -29,8 +31,8 @@ class MentorsController < ApplicationController
   # GET /mentors/1
   # GET /mentors/1.json
   def show
-    @skills=@mentor.skills
-    @beliefs=@mentor.beliefs
+    @skills = @mentor.skills
+    @beliefs = @mentor.beliefs
   end
 
   # GET /mentors/new
@@ -39,8 +41,7 @@ class MentorsController < ApplicationController
   end
 
   # GET /mentors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /mentors
   # POST /mentors.json
@@ -50,16 +51,16 @@ class MentorsController < ApplicationController
     @mentor.user = current_user
 
     # iterate through parameters - array created by multi select
-    params[:mentor][:skills].each do | skill |
-      @mentor.skills.build(:name => skill)
+    params[:mentor][:skills].each do |skill|
+      @mentor.skills.build(name: skill)
     end
 
-    params[:mentor][:beliefs].each do | belief |
-      @mentor.beliefs.build(:name => belief)
+    params[:mentor][:beliefs].each do |belief|
+      @mentor.beliefs.build(name: belief)
     end
 
     respond_to do |format|
-      if @mentor.save 
+      if @mentor.save
         format.html { redirect_to @mentor, notice: 'Mentor was successfully created.' }
         format.json { render :show, status: :created, location: @mentor }
       else
@@ -72,19 +73,15 @@ class MentorsController < ApplicationController
   # PATCH/PUT /mentors/1
   # PATCH/PUT /mentors/1.json
   def update
-    @mentor.skills.each do |skill|
-      skill.destroy
-    end
+    @mentor.skills.each(&:destroy)
 
-    @mentor.beliefs.each do |belief|
-      belief.destroy
-    end
+    @mentor.beliefs.each(&:destroy)
 
-    params[:mentor][:skills].each do | skill |
-      @mentor.skills.build(:name => skill)
+    params[:mentor][:skills].each do |skill|
+      @mentor.skills.build(name: skill)
     end
-    params[:mentor][:beliefs].each do | belief |
-      @mentor.beliefs.build(:name => belief)
+    params[:mentor][:beliefs].each do |belief|
+      @mentor.beliefs.build(name: belief)
     end
     respond_to do |format|
       if @mentor.update(mentor_params)
@@ -108,14 +105,14 @@ class MentorsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_mentor
-      @mentor = Mentor.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def mentor_params
-      params.require(:mentor).permit(:user_id, :bio, :accept_mentee, :linkedIn, :website, :picture)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_mentor
+    @mentor = Mentor.find(params[:id])
+  end
 
+  # Only allow a list of trusted parameters through.
+  def mentor_params
+    params.require(:mentor).permit(:user_id, :bio, :accept_mentee, :linkedIn, :website, :picture)
+  end
 end

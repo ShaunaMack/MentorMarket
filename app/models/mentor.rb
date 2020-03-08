@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Mentor < ApplicationRecord
   belongs_to :user
 
@@ -6,5 +8,4 @@ class Mentor < ApplicationRecord
   has_many :skills, dependent: :destroy
 
   has_many :beliefs, dependent: :destroy
-
 end

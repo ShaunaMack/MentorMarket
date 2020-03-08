@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class MentorsControllerTest < ActionDispatch::IntegrationTest
@@ -5,17 +7,17 @@ class MentorsControllerTest < ActionDispatch::IntegrationTest
     @mentor = mentors(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get mentors_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_mentor_url
     assert_response :success
   end
 
-  test "should create mentor" do
+  test 'should create mentor' do
     assert_difference('Mentor.count') do
       post mentors_url, params: { mentor: { accept_mentee: @mentor.accept_mentee, bio: @mentor.bio, linkedIn: @mentor.linkedIn, user_id: @mentor.user_id, website: @mentor.website } }
     end
@@ -23,22 +25,22 @@ class MentorsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to mentor_url(Mentor.last)
   end
 
-  test "should show mentor" do
+  test 'should show mentor' do
     get mentor_url(@mentor)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_mentor_url(@mentor)
     assert_response :success
   end
 
-  test "should update mentor" do
+  test 'should update mentor' do
     patch mentor_url(@mentor), params: { mentor: { accept_mentee: @mentor.accept_mentee, bio: @mentor.bio, linkedIn: @mentor.linkedIn, user_id: @mentor.user_id, website: @mentor.website } }
     assert_redirected_to mentor_url(@mentor)
   end
 
-  test "should destroy mentor" do
+  test 'should destroy mentor' do
     assert_difference('Mentor.count', -1) do
       delete mentor_url(@mentor)
     end
