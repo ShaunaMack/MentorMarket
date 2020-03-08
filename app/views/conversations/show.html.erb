@@ -1,25 +1,27 @@
-<h1>Chatting with <%= @conversation.with(current_user).username %></h1>
+<div class="container">
+  <h1>Chatting with <%= @conversation.with(current_user).username %></h1>
 
-<div id="conversation-main">
-  <div id="conversation-body">
-    <%= render @conversation.personal_messages %>
+  <div id="conversation-main">
+    <div id="conversation-body">
+      <%= render @conversation.personal_messages %>
+    </div>
+
+    <%= form_for @personal_message do |f| %>
+      <%= hidden_field_tag 'conversation_id', @conversation.id %>
+      <%= f.label :body  %>
+      <%= f.text_area :body %>
+
+      <script>
+          tinymce.init({
+          selector: '#personal_message_body',
+            plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+            toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+            toolbar_drawer: 'floating',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+          });
+      </script>
+      <%= f.submit "Send", class:'btn btn-primary'%>
+    <% end %>
   </div>
-
-  <%= form_for @personal_message do |f| %>
-    <%= hidden_field_tag 'conversation_id', @conversation.id %>
-    <%= f.label :body  %>
-    <%= f.text_area :body %>
-
-    <script>
-        tinymce.init({
-        selector: '#personal_message_body',
-          plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-          toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
-          toolbar_drawer: 'floating',
-          tinycomments_mode: 'embedded',
-          tinycomments_author: 'Author name',
-        });
-    </script>
-    <%= f.submit "Send", class:'btn btn-primary'%>
-  <% end %>
 </div>

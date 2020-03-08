@@ -1,4 +1,4 @@
-
+<div class="container">
   <div class="float-right">
     <%= image_tag @mentor.picture, class: 'profile-image', height:300 if @mentor.picture.attached? %>
   </div>
@@ -67,5 +67,6 @@
 <% else %>
   <%= link_to 'Login to request mentor', new_user_session_path, class:'btn btn-primary'%>
 <% end %>
+</div>
 </div>
 </div>
