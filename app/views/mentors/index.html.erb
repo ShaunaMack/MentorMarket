@@ -23,23 +23,29 @@
   
   </div>
  
-  <div class="card-columns col-9">
+  <div class="card-columns col-9 align-items-top">
     <% @mentors.each do |mentor| %>
         <% if mentor.accept_mentee? %>
-          <div class="card bg-dark text-white text-center">
-            <img class="card-img" src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg" alt="computer image">
-            <div class="card-img-overlay">
-              <h3 class="card-title"><strong><%= mentor.user.get_name %></strong></h3>
-              <p class= "card-text"><%= mentor.user.get_profile_field(:job_title) %></p>
-              <p class= "card-text"><%= mentor.bio.truncate(40) %></p>
-              <p>
-                <a href="<%= mentor.linkedIn %>" class="px-2 fa-lg" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="<%= mentor.website %>" class="px-2 fa-lg" target="_blank"><i class="fas fa-laptop-code"></i></a>
-              </p>
-              <%= link_to 'See more', mentor, class:"btn btn-primary" %>
+          <div class="card text-center">
+
+            <div class="row align-items-center justify">
+              <%= image_tag mentor.picture, class:"rounded-circle", width: 70, height: 70 %>
+              <div class="col-9">
+                  <h3 class="card-title align-items-center"><strong><%= mentor.user.get_name %></strong></h3>
+              </div>
             </div>
-            </div>
+
+            <p class= "card-text"><%= mentor.user.get_profile_field(:job_title) %></p>
+            <p class= "card-text"><%= mentor.bio.truncate(40) %></p>
+            <p>
+              <a href="<%= mentor.linkedIn %>" class="px-2 fa-lg" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+              <a href="<%= mentor.website %>" class="px-2 fa-lg" target="_blank"><i class="fas fa-laptop-code"></i></a>
+            </p>
+            <%= link_to 'See more', mentor, class:"btn btn-primary" %>   
+          </div>
       <% end %>
     <% end %>
   </div>
 </div>
+
+

@@ -1,10 +1,9 @@
 
-<h1> 
-  <%= @mentor.user.get_name %></h1>
-<p>
-  <%= image_tag @mentor.picture, class: 'rounded float-right', width: 300 if @mentor.picture.attached? %>
-</p>
-
+  <div class="float-right">
+    <%= image_tag @mentor.picture, class: 'profile-image', height:300 if @mentor.picture.attached? %>
+  </div>
+ 
+  <h1><%= @mentor.user.get_name %></h1>
 <p>
 <i>
   – <%= @mentor.user.get_profile_field(:job_title) %>
@@ -68,4 +67,5 @@
 <% else %>
   <%= link_to 'Login to request mentor', new_user_session_path, class:'btn btn-primary'%>
 <% end %>
-<%= link_to 'Back', mentors_path, class:'btn btn-primary' %>
+</div>
+</div>
