@@ -1,3 +1,4 @@
+
 <div class="container">
   <h1>Chatting with <%= @conversation.with(current_user).username %></h1>
 
@@ -13,7 +14,7 @@
       <script>
           tinymce.init({
           selector: '#personal_message_body',
-            plugins: 'image link medialists tinycomments tinymcespellchecker',
+            plugins: 'image link tinycomments tinymcespellchecker',
             toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
             toolbar_drawer: 'floating',
             tinycomments_mode: 'embedded',
