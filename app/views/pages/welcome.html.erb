@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="display-4">Mentor Market</h1>
+                <h1 class="display-4"><%= image_tag("app-icon.png", :style => 'height:1em;')%> Mentor Market</h1>
                 <div class= "row space-evenly">
                     <% if current_user %>
                             <%= link_to 'Find a Mentor', mentors_path, class:'btn btn-lg btn-primary col-5' %>
