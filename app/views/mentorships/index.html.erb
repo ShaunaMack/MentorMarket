@@ -4,7 +4,6 @@
 <% for menteeship in current_user.menteeships %>
   <% if !menteeship.accepted %>
     <div class="user">
-        <p>
         <strong><%= menteeship.user.username %></strong>
         <%= simple_form_for(menteeship) do |f| %>
             <%= f.input :accepted, label: "Accept" %>
@@ -12,24 +11,21 @@
         <% end %>
 
         <div class="clear"></div>
-        </p>
     </div>
   <% end %>
 <% end %>
 
 <h1>Mentees</h1>
 
-<% for user in current_user.menteeships %>
+<% for menteeship in current_user.menteeships %>
   <% if menteeship.accepted %>
     <div class="user">
-        <p>
         <strong><%= menteeship.user.username %></strong>
         <div id="conversation-body">
-          <%= render 'conversation/conversation' %>
+          <%= render 'conversations/conversation', conversation: Conversation.between(menteeship.user, current_user).first %>
         </div>
         <%= link_to 'Chat', new_personal_message_path(receiver_id: menteeship.user), class:'btn btn-primary' %>
         <div class="clear"></div>
-        </p>
     </div>
   <% end %>
 <% end %>
@@ -40,11 +36,14 @@
 
 <% for user in current_user.mentor_users %>
   <div class="user">
-    <p>
       <strong><%= user.username %></strong>
+      <% if Conversation.between(user, current_user).first.present? %>
+        <div id="conversation-body">
+            <%= render 'conversations/conversation', conversation: Conversation.between(user, current_user).first %>
+          </div>
+        <% end %>
       <%= link_to 'Chat', new_personal_message_path(receiver_id: user), class:'btn btn-primary'%>
       <div class="clear"></div>
-    </p>
   </div>
 <% end %>
 </div>

@@ -2,7 +2,6 @@
 
 class MentorshipsController < ApplicationController
   def index
-    @users = User.all
   end
 
   def create

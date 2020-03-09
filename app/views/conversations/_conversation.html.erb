@@ -1,7 +1,3 @@
 <div>
-   <h3><%= conversation.with(current_user).username %></h3>
   <em><%= conversation.personal_messages.last.user.username %>: <%= sanitize conversation.personal_messages.last.body.truncate(50).html_safe %></em>
-  <br>
-  <%= link_to "Chat with #{conversation.with(current_user).username}", conversation_path(conversation) %>
-  <hr>
 </div>
