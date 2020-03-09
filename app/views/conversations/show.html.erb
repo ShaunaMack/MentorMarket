@@ -10,11 +10,10 @@
       <%= hidden_field_tag 'conversation_id', @conversation.id %>
       <%= f.label :body  %>
       <%= f.text_area :body %>
-
       <script>
           tinymce.init({
           selector: '#personal_message_body',
-            plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+            plugins: 'image link medialists tinycomments tinymcespellchecker',
             toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
             toolbar_drawer: 'floating',
             tinycomments_mode: 'embedded',

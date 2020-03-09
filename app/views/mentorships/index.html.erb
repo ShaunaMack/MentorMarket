@@ -24,7 +24,9 @@
     <div class="user">
         <p>
         <strong><%= menteeship.user.username %></strong>
-        
+        <div id="conversation-body">
+          <%= render 'conversation/conversation' %>
+        </div>
         <%= link_to 'Chat', new_personal_message_path(receiver_id: menteeship.user), class:'btn btn-primary' %>
         <div class="clear"></div>
         </p>
