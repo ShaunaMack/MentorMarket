@@ -1,4 +1,4 @@
 <p><%= sanitize personal_message.body.html_safe %></p>
-<p>at <strong><%= personal_message.created_at %></strong><br>
-  by <strong><%= personal_message.user.username %></strong></p>
+- <i><strong><%= personal_message.user.username %></strong>
+: <%= personal_message.created_at.strftime("%a %d/%m/%y at %l:%M %p") %></strong></i>
 <hr>
