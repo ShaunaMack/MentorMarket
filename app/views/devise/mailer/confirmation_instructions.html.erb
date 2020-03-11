@@ -1,6 +1,7 @@
 <div class="container">
     
-    <p>Welcome <%= @email %> to <%= image_tag("app-icon.png", :style => 'height:1em;')%> Mentor Market!</p>
+    <p>Welcome <%= @email %> to <%= attachments.inline['app-icon'] = {content: File.read("#{Rails.root}/app/assets/images/app-icon.png"),
+                                            mime_type: "image/png"} %> Mentor Market!</p>
 
     <p>In only two easy steps you will be on your way to finding your next mentor</p>
    
@@ -14,6 +15,6 @@
 
     <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
     
-    <%= attachments.inline['diversity'] = {content: File.read("#{Rails.root}/app/assets/images/diversity.png"),
+    <%= attachments.inline['diversity'] = { content: File.read("#{Rails.root}/app/assets/images/diversity.png"),
                                             mime_type: "image/png" } %>
 </div>
