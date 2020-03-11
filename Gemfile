@@ -62,3 +62,8 @@ gem 'gemoji'
 gem 'jquery-rails'
 gem 'pg_search'
 gem 'simple_form'
+
+gem 'activeadmin'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'

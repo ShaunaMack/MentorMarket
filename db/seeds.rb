@@ -8,5 +8,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Mentorship.destroy_all
-Conversation.destroy_all
+p 'loading'
+AdminUser.create!(email: Rails.application.credentials.dig(:admin, :admin_email), password: Rails.application.credentials.dig(:admin, :admin_password), password_confirmation: Rails.application.credentials.dig(:admin, :admin_password))
+p 'done'
