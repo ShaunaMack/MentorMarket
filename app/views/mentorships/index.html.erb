@@ -6,7 +6,11 @@
       <% for menteeship in current_user.menteeships %>
         <% if !menteeship.accepted %>
           <div class="user">
+<<<<<<< HEAD
               <%= render 'users/user_link', user: menteeship.user %>
+=======
+              <strong><%= menteeship.user.get_name %></strong>
+>>>>>>> c030f812bc2d287ac854272f5a65f96a7a7849b3
               <%= simple_form_for(menteeship) do |f| %>
                   <%= f.hidden_field :accepted, value: true %>
                   <%= f.submit "Accept", class:'btn btn-success' %>     
@@ -47,7 +51,11 @@
       <% for mentorship in current_user.mentorships %>
         <div class="user row">
           <div class="col-lg">
+<<<<<<< HEAD
               <%= render 'users/user_link', user: mentorship.mentor_user %>
+=======
+            <strong><%= mentorship.mentor_user.get_name %></strong>
+>>>>>>> c030f812bc2d287ac854272f5a65f96a7a7849b3
             <% if !mentorship.accepted %>
               (pending)
             <% end %>
