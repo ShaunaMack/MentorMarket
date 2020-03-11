@@ -20,7 +20,7 @@
 
 <p>
   <strong>Bio:</strong>
-  <%= @mentor.bio %>
+  <%= @mentor.bio.html_safe %>
 </p>
 
 <p>
@@ -58,9 +58,16 @@
 </p>
 <% if current_user %>
   <% if current_user.mentor == @mentor  %>
-    <%= link_to 'Edit mentor profile fields', edit_mentor_path(@mentor), class:'btn btn-primary'  %>
-    <%= link_to 'Edit user profile fields', edit_profile_path(current_user), class:'btn btn-primary'  %>
-    <%= link_to 'Delete mentor profile', @mentor, method: :delete, data: { confirm: 'Are you sure you want to delete mentor profile?' }, class:'btn btn-danger' %>
+        <% if !current_user.profile %> 
+          <p><i>We recommend completing your user profile so that your name, job title and location are visible to potential mentees.</i></p>
+        <% end %>
+    <%= link_to 'Edit Mentor Profile', edit_mentor_path(@mentor), class:'btn btn-primary'  %>
+      <% if current_user.profile %>
+        <%= link_to 'Edit User Profile', edit_profile_path(current_user), class:'btn btn-primary'  %>
+        <% else %>
+        <%= link_to 'Complete User Profile', new_profile_path(current_user), class:'btn btn-success'%>
+        <% end %>
+    <%= link_to 'Delete Mentor Profile', @mentor, method: :delete, data: { confirm: 'Are you sure you want to delete mentor profile?' }, class:'btn btn-danger' %>
   <% elsif current_user.mentor_users.include?(@mentor.user) %>
     <%= link_to 'Chat', new_personal_message_path(receiver_id: @mentor.user), class:'btn btn-primary'%>
   <% else %>

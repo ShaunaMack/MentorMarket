@@ -6,15 +6,28 @@
   <div class="form-inputs">
 
     <%= f.hidden_field :user %>
-    <%= f.input :bio %>
+    <%= f.label :bio  %>
+    <%= f.text_area :bio %>
+      <script>
+          tinymce.init({
+          selector: '#mentor_bio',
+            plugins: 'image link tinymcespellchecker',
+            toolbar: 'a11ycheck casechange checklist formatpainter permanentpen table',
+            toolbar_drawer: 'floating',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+          });
+      </script>
     <%= f.input :accept_mentee, label: "Accepting new mentees?" %>
     <%= f.input :linkedIn %>
     <%= f.input :website %>
     <%= f.label :picture %>
     <%= f.file_field :picture, accept:'image/png,image/gif,image/jpeg,image/jpg' %>
-    <p>In order to help prospective mentees find you, select the four of your strongest professional skills</p>
+    <hr>
+    <p>In order to help prospective mentees find you, select up to four of your strongest professional skills.</p>
     <%= f.input :skills, collection: Skill::SKILLS, input_html: { multiple: true }, class: "chosen-select" %>
-    <p>In order to help prospective mentees find you, select the four of your strongest professional skills</p>
+    <hr>
+    <p>In order to help prospective mentees find you, select up to four of your strongest interests.</p>
     <%= f.input :beliefs, collection: Belief::BELIEFS, input_html: { multiple: true }, class: "chosen-select" %>
   </div>
     
