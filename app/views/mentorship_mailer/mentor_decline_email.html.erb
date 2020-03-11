@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p><%= @mentorship.mentor_user.get_name %> has declined your request.</p>
+    
+    <p>Sorry about that.
+    
+    <p>Mentors decline for many reasons. It could be that they are busy and just forgot to mark themselves as unavailable.</p>
+    
+    <p>Alternatively, they may have not had enough information about you. Do make sure you have completed all the fields of your 
+    <% if @mentorship.user.profile %>
+      <%= link_to "user profile", edit_profile_url(@mentorship.user) %>  
+    <% else %>
+      <%= link_to "user profile", new_profile_url(@mentorship.user) %> 
+    <% end%>
+    to give prospective mentors the chance to see a little bit about you.</p>
+    
+    <p><%= link_to 'Check out available mentors now', mentors_url %>.</p>
+  </body>
+</html>

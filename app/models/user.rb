@@ -28,7 +28,7 @@ class User < ApplicationRecord
   def get_name
     profile ? profile.name : username
   end
-
+  
   def get_profile_field(field)
     profile ? profile[field] : ''
   end

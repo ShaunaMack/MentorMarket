@@ -28,7 +28,7 @@
   <%= @mentor.accept_mentee %>
 </p>
 
-<div class="col-4">
+<div>
   <strong> Skills:</strong>
   <%if @skills%>
     <%@skills.each do |skill|%>
@@ -40,7 +40,7 @@
   <%end%>
  </div>
 
- <div class="col-4">
+ <div>
  <p><strong> Beliefs:</strong></p>
  <%if @beliefs%>
    <%@beliefs.each do |belief|%>
@@ -53,9 +53,14 @@
  </div>
 
 
-<p>
-  <a href="<%= @mentor.linkedIn %>" target="_blank">LinkedIn</a> | <a href="<%= @mentor.website %>" target="_blank">Website</a>
-</p>
+<ul style="list-style:none; padding-left:0">
+  <% unless @mentor.linkedIn.empty? %>
+    <li><a href="<%= @mentor.linkedIn %>" target="_blank">LinkedIn</a> </li>
+  <% end %>
+  <% unless @mentor.website.empty? %>
+    <li><a href="<%= @mentor.website %>" target="_blank">Website</a></li>
+  <% end %>
+</ul>
 <% if current_user %>
   <% if current_user.mentor == @mentor  %>
         <% if !current_user.profile %> 

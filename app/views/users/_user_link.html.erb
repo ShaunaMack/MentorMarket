@@ -1,0 +1,5 @@
+ <% if user.mentor && user.mentor.accept_mentee? %>
+    <%= link_to user.get_name, mentor_path(user.mentor) %>
+<% else %>
+    <%= link_to user.get_name, user_path(user) %>
+<% end %>
