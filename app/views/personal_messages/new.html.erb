@@ -1,10 +1,10 @@
 <div class="container">
-<h1>Start conversation with <%= @receiver.username %></h1>
+<h1>Start conversation with <%= @receiver.get_name %></h1>
 
 <%= simple_form_for @personal_message do |f| %>
   <%= hidden_field_tag 'receiver_id', @receiver.id %>
 
-  <%= f.text_area :body,  required: true, placeholder: "Hi #{@receiver.username}..."%>
+  <%= f.text_area :body,  required: true, placeholder: "Hi #{@receiver.get_name}..."%>
   <script>
       tinymce.init({
       selector: '#personal_message_body',
