@@ -1,7 +1,6 @@
 
 <div class="container">
   <h1>Chatting with <%= @conversation.with(current_user).username %></h1>
-  <p>include this link? https://getemoji.com/</p>
   <div id="conversation-main">
     <div id="conversation-body">
       <%= render @conversation.personal_messages %>
@@ -21,6 +20,7 @@
             tinycomments_author: 'Author name',
           });
       </script>
+      <br />
       <%= f.submit "Send", class:'btn btn-primary'%>
     <% end %>
   </div>

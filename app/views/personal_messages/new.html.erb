@@ -4,8 +4,18 @@
 <%= simple_form_for @personal_message do |f| %>
   <%= hidden_field_tag 'receiver_id', @receiver.id %>
 
-  <%= f.label :body %>
-  <%= f.text_area :body, required: true, placeholder: "Hi #{@receiver.username}..."%>
-  <%= f.submit %>
+  <%= f.text_area :body,  required: true, placeholder: "Hi #{@receiver.username}..."%>
+  <script>
+      tinymce.init({
+      selector: '#personal_message_body',
+        plugins: 'image link tinycomments tinymcespellchecker',
+        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+        toolbar_drawer: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+      });
+  </script>
+  <br />
+  <%= f.submit value: 'Send', class: "btn btn-primary"%>
 <% end %>
 </div>
