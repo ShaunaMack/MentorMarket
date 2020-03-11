@@ -14,5 +14,6 @@
 
     <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
     
-    <div><%= attachments.inline['diversity.png'] = File.read("#{Rails.root}/app/assets/images/diversity.png") %></div>
+    <%= attachments.inline['diversity'] = {content: File.read("#{Rails.root}/app/assets/images/diversity.png"),
+                                            mime_type: "image/png" } %>
 </div>
