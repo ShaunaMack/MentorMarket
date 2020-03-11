@@ -1,7 +1,7 @@
 <div class="container">
 <% if user_signed_in? %>
     <% if !current_user.mentor%>
-        <h1><%= "New Mentor: #{current_user.username}"%></h1>
+        <h1><%= "Mentor Profile"%></h1>
 
         <%= render 'form', mentor: @mentor %>
 
