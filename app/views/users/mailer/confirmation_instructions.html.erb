@@ -1,5 +1,18 @@
-<p>Welcome <%= @email %> to Mentor Market!</p>
+<div class="container">
+    
+    <p>Welcome <%= @email %> to <%= image_tag("app-icon.png", :style => 'height:1em;')%> Mentor Market!</p>
 
-<p>You can confirm your account email through the link below:</p>
+    <p>In only 2 easy steps you will be on your way to finding your next mentor</p>
+   
+        <ol>
+            <li>Confirm your email account - verify your account so we can send you valuable reminders and notifications</li>
+            <li>Make your user profile - give prospective mentors some very basic information about you</li>
+        </ol>
+        <p>It is completely up to you how much information you provide. More information provided may increase opportunities for mentoring relationships</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+    <p>You can confirm your account email through the link below:</p>
+
+    <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+    
+    <div><%= image_tag("diversity.png", :style => 'height:1em;')%></div>
+</div>
