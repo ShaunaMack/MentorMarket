@@ -6,6 +6,7 @@ class MentorsController < ApplicationController
   # GET /mentors
   # GET /mentors.json
   def index
+    @mentors = Mentor.all
     @skills = Skill::SKILLS
     @beliefs = Belief::BELIEFS
     @filter = params['filter']

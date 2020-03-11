@@ -29,7 +29,7 @@
           <div class="card text-center">
 
             <div class="row align-items-center justify">
-              <%= image_tag mentor.picture, class:"rounded-circle", width: 70, height: 70 %>
+              <%= image_tag mentor.picture, class:"rounded-circle", width: 70, height: 70 if mentor.picture.attached?  %>
               <div class="col-9">
                   <h3 class="card-title align-items-center"><strong><%= mentor.user.get_name %></strong></h3>
               </div>

@@ -1,7 +1,7 @@
 
 <div class="container">
   <h1>Chatting with <%= @conversation.with(current_user).username %></h1>
-
+  <p>include this link? https://getemoji.com/</p>
   <div id="conversation-main">
     <div id="conversation-body">
       <%= render @conversation.personal_messages %>
@@ -10,7 +10,7 @@
     <%= form_for @personal_message do |f| %>
       <%= hidden_field_tag 'conversation_id', @conversation.id %>
       <%= f.label :body  %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, rows: 20 %>
       <script>
           tinymce.init({
           selector: '#personal_message_body',
