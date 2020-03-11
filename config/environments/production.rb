@@ -116,14 +116,13 @@ Rails.application.configure do
   host = 'mentor-market.herokuapp.com'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :user_name            => Rails.application.credentials.dig(:gmail, :gmail_username),
-    :password             => Rails.application.credentials.dig(:gmail, :gmail_password),
-    :authentication       => "plain",
-    :enable_starttls_auto => true
-    
+    address: 'smtp.gmail.com',
+    port: 587,
+    user_name: Rails.application.credentials.dig(:gmail, :gmail_username),
+    password: Rails.application.credentials.dig(:gmail, :gmail_password),
+    authentication: 'plain',
+    enable_starttls_auto: true
+
   }
   config.action_mailer.default_url_options = { host: 'mentor-market.herokuapp.com' }
-
 end

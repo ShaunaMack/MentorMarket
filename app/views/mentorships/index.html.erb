@@ -25,9 +25,11 @@
           <div class="user row">
             <div class="col-lg">
               <strong><%= menteeship.user.username %></strong>
-              <div id="conversation-body">
-                <%= render 'conversations/conversation', conversation: Conversation.between(menteeship.user, current_user).first %>
-              </div>
+              <% if Conversation.between(menteeship.user, current_user).first %>
+                <div id="conversation-body">
+                  <%= render 'conversations/conversation', conversation: Conversation.between(menteeship.user, current_user).first %>
+                </div>
+              <% end %>
               </div>
               <div class="col-sm">
                 <%= link_to 'Chat', new_personal_message_path(receiver_id: menteeship.user), class:'btn btn-primary' %>

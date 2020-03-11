@@ -1,12 +1,13 @@
+# frozen_string_literal: true
 
 class MentorshipsController < ApplicationController
-  def index
-  end
+  def index; end
 
   def create
     @mentorship = current_user.mentorships.build(mentor_user_id: params[:mentor_user_id])
     if @mentorship.save
-      flash[:notice] = 'Added mentor.'
+      MentorshipMailer.with(mentorship: @mentorship).new_mentor_request_email.deliver_now
+      flash[:notice] = 'Your mentor request has been sent. When the mentor confirms or rejects your request, we will let you know by email!'
       redirect_to root_url
     else
       flash[:notice] = 'Unable to add mentor.'

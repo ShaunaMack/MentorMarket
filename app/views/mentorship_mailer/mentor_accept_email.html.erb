@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p><%= @mentorship.mentor_user.get_name %> has accepted your request!</p>
+    <p>Login to <%= link_to 'Mentor Market', new_personal_message_url(receiver_id: @mentorship.user) %> to start the conversation </p>
+  </body>
+</html>
