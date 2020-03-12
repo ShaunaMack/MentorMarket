@@ -15,7 +15,7 @@ class Belief < ApplicationRecord
      ['Career Changers', 'career_changers'],
      ['Right to Privacy', 'privacy'],
      ['Freedom of Information', 'free_information'],
-     %w[Nerodiversity neurodiversity],
+     %w[Neurodiversity neurodiversity],
      ['Reaching the Underserved', 'reach_underserved'],
      ['Rural or Regional Tech', 'rural_tech']].freeze
 
