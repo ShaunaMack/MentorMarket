@@ -3,7 +3,7 @@
   <h1>Chatting with <%= @conversation.with(current_user).get_name %></h1>
   <div id="conversation-main">
     <div id="conversation-body">
-      <%= render @conversation.personal_messages %>
+      <%= render @conversation.personal_messages.html_safe %>
     </div>
 
     <%= form_for @personal_message do |f| %>
